@@ -1,5 +1,27 @@
 import React from 'react';
 
+const Menu = () => {
+    return (
+        <div>
+            <ul>
+                <li>Menu1</li>
+                <li>Menu2</li>
+                <li>Menu3</li>
+            </ul>
+            <hr />
+        </div>
+    )
+}
+
+const Footer = () => {
+    return (
+        <div>
+            <hr />
+            Footer
+        </div>
+    )
+}
+
 const UserItem = ({user}) => {
     return (
         <tr>
@@ -21,21 +43,25 @@ const UserItem = ({user}) => {
 
 const UserList = ({users}) => {
     return (
-        <table>
-            <th>
-                Username
-            </th>
-            <th>
-                First name
-            </th>
-            <th>
-                Last name
-            </th>
-            <th>
-                Email
-            </th>
-            {users.map((user) => <UserItem user={user}/>)}
-        </table>
+        <div>
+            <Menu/>
+            <table>
+                <th>
+                    Username
+                </th>
+                <th>
+                    First name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    Email
+                </th>
+                {users.map((user) => <UserItem user={user}/>)}
+            </table>
+            <Footer/>
+        </div>
     )
 }
 
