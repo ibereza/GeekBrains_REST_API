@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import './App.css';
 
+import Footer from './components/Footer';
+import Menu from './components/Menu';
 import UserList from './components/Users';
 
 class App extends React.Component {
@@ -21,25 +23,16 @@ class App extends React.Component {
                     }
                 )
             }).catch(error => console.log(error))
-        // const users = [
-        //     {
-        //         'username': 'ibereza',
-        //         'first_name': 'Igor',
-        //         'last_name': 'Bereza',
-        //         'email': 'igor@site.com'
-        //     },
-        // ]
-        // this.setState(
-        //     {
-        //         'users': users
-        //     }
-        // )
     }
 
     render() {
         return (
             <div>
+                <Menu/>
+                <hr/>
                 <UserList users={this.state.users}/>
+                <hr/>
+                <Footer/>
             </div>
         )
     }
