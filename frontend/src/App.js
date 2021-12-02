@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import './App.css';
-import {HashRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 import Footer from './components/Footer';
 import Menu from './components/Menu';
@@ -51,9 +51,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Menu/>
-                <hr/>
-                <HashRouter>
+                <BrowserRouter>
+                    <Menu/>
+                    <hr/>
                     <Route exact path='/' component={() =>
                         <UserList users={this.state.users}/>
                     }/>
@@ -63,9 +63,9 @@ class App extends React.Component {
                     <Route exact path='/todos' component={() =>
                         <TodoList todos={this.state.todos}/>
                     }/>
-                </HashRouter>
-                <hr/>
-                <Footer/>
+                    <hr/>
+                    <Footer/>
+                </BrowserRouter>
             </div>
         )
     }
