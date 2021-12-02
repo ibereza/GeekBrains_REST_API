@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import React from "react";
 
-const ProjectItem = ({project}) => {
+const ProjectInfoItem = ({project, users}) => {
     return (
         <tr>
             <td>
@@ -11,13 +11,14 @@ const ProjectItem = ({project}) => {
                 {project.url}
             </td>
             <td>
-                {project.users}
+                {project.users.map((userID) => {return (
+                    users.find((user) => user.id === userID)).last_name}).join(', ')}
             </td>
         </tr>
     )
 }
 
-const ProjectInfoList = ({projects}) => {
+const ProjectInfoList = ({projects, users}) => {
     let {id} = useParams();
     let filtered_items = projects.filter((project) => project.id == id)
 
@@ -32,7 +33,7 @@ const ProjectInfoList = ({projects}) => {
             <th>
                 Users
             </th>
-            {filtered_items.map((project) => <ProjectItem project={project}/>)}
+            {filtered_items.map((project) => <ProjectInfoItem project={project} users={users}/>)}
         </table>
     )
 }

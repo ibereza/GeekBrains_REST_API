@@ -26,7 +26,6 @@ const TodoItem = ({todo}) => {
 }
 
 const TodoList = ({todos}) => {
-    console.log(todos)
     return (
         <table>
             <th>
