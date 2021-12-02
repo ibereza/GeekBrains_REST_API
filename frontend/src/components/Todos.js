@@ -45,7 +45,7 @@ const TodoList = ({todos}) => {
                 Update
             </th>
             <th>
-                Is_active
+                Is active
             </th>
             {todos.map((todo) => <TodoItem todo={todo}/>)}
         </table>
