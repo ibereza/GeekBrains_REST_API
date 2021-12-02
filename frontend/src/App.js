@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Footer from './components/Footer';
 import Menu from './components/Menu';
 import UserList from './components/Users';
 import ProjectList from './components/Projects';
 import TodoList from './components/Todos';
+import NotFound404 from "./components/NotFound404";
 
 class App extends React.Component {
     constructor(props) {
@@ -54,15 +55,18 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Menu/>
                     <hr/>
-                    <Route exact path='/' component={() =>
-                        <UserList users={this.state.users}/>
-                    }/>
-                    <Route exact path='/projects' component={() =>
-                        <ProjectList projects={this.state.projects}/>
-                    }/>
-                    <Route exact path='/todos' component={() =>
-                        <TodoList todos={this.state.todos}/>
-                    }/>
+                    <Switch>
+                        <Route exact path='/' component={() =>
+                            <UserList users={this.state.users}/>
+                        }/>
+                        <Route exact path='/projects' component={() =>
+                            <ProjectList projects={this.state.projects}/>
+                        }/>
+                        <Route exact path='/todos' component={() =>
+                            <TodoList todos={this.state.todos}/>
+                        }/>
+                        <Route component={NotFound404}/>
+                    </Switch>
                     <hr/>
                     <Footer/>
                 </BrowserRouter>
