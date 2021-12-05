@@ -11,8 +11,14 @@ const ProjectInfoItem = ({project, users}) => {
                 {project.url}
             </td>
             <td>
-                {project.users.map((userID) => {return (
-                    users.find((user) => user.id === userID)).last_name}).join(', ')}
+                {/*{project.users.map((userID) => {return (*/}
+                {/*    users.find((user) => user.id === userID)).last_name}).join(', ')}*/}
+                {project.users.map((userID) => {
+                    let user = users.find((user) => user.id === userID)
+                    if (user) {
+                        return user.last_name}
+                    }).join(', ')
+                }
             </td>
         </tr>
     )
