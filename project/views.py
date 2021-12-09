@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -41,6 +41,7 @@ class TodoFilter(filters.FilterSet):
 
 class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TodoModelSerializer
     # pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
