@@ -41,7 +41,6 @@ class TodoFilter(filters.FilterSet):
 
 class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TodoModelSerializer
     # pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
