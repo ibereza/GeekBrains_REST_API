@@ -20,5 +20,5 @@ class Todo(models.Model):
     update = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
 
-    def __str__(self):
-        return f'{self.project} {self.user} {self.text[:50]}'
+    # def __str__(self):
+    #     return f'{self.project} {self.user} {self.text[:50]}'
