@@ -36,6 +36,18 @@ class App extends React.Component {
         })
     }
 
+    deleteTodo(id) {
+        const headers = this.get_headers()
+
+        axios.delete(`http://localhost:8000/api/todo/${id}`, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {
+            console.log(error)
+            this.setState({todos:[]})
+        })
+    }
+
     set_token(token) {
         const cookies = new Cookies()
         cookies.set('token', token)
@@ -156,7 +168,8 @@ class App extends React.Component {
                             <ProjectInfoList projects={this.state.projects} users={this.state.users}/>
                         </Route>
                         <Route exact path='/todos' component={() =>
-                            <TodoList todos={this.state.todos}/>
+                            <TodoList todos={this.state.todos}
+                                      deleteTodo={(id) => this.deleteTodo(id)}/>
                         }/>
                         <Route exact path='/login' component={() =>
                             <LoginForm get_token={(username, password) => this.get_token(username, password)}/>
